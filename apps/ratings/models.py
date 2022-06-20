@@ -39,4 +39,4 @@ class Rating(TimeStampedUUIDmodel):
         unique_together = ["rater", "agent"]
 
     def __str__(self):
-        return f"{self.agent} rated at {self.rating}" 
+        return f"{self.agent} rated at {self.rating}"

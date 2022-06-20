@@ -124,7 +124,7 @@ def create_property_api_view(request):
     user = request.user
     request.data._mutable = True
     data = request.data
-    data['user'] = request.user.pkid
+    data["user"] = request.user.pkid
     request.data._mutable = False
     serializer = PropertyCreateSerializer(data=data)
 

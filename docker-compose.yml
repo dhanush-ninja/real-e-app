@@ -10,8 +10,8 @@ services:
             - .:/app
             - static_volume:/app/staticfiles
             - media_volume:/app/mediafiles
-        expose:
-            - "8000"
+        # expose:
+        #     - "8000"
         env_file:
             - .env
         depends_on:
@@ -29,6 +29,20 @@ services:
             - POSTGRES_USER=${POSTGRESQL_DB_USER}
             - POSTGRES_PASSWORD=${POSTGRESQL_PASSWORD}
             - POSTGRES_DB=${POSTGRESQL_NAME}
+        networks:
+            - estate-react
+    nginx:
+        restart: always
+        depends_on:
+            - api
+        volumes:
+            - static_volume:/app/staticfiles
+            - media_volume:/app/mediafiles
+        build:
+            context: ./docker/local/nginx
+            dockerfile: Dockerfile
+        ports:
+            - "8080:80"
         networks:
             - estate-react
 networks:
