@@ -32,6 +32,7 @@ THIRD_PARTY_APPS = [
     "phonenumber_field",
     "rest_framework_simplejwt",
     "djoser",
+    "djcelery_email",
 ]
 
 LOCAL_APPS = [
