@@ -29,8 +29,10 @@ services:
             - /app/node_modules
         networks:
             - estate-react
-        environment:
-            - WDS_SOCKET_PORT=0
+        stdin_open: true
+        # environment:
+        #     - CHOKIDAR_USEPOLLING=true
+        #     - WDS_SOCKET_PORT=0
 
     postgres-db:
         image: postgres:12.0-alpine
@@ -55,6 +57,7 @@ services:
         restart: always
         depends_on:
             - api
+            - client
         volumes:
             - static_volume:/app/staticfiles
             - media_volume:/app/mediafiles
